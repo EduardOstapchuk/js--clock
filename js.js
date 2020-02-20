@@ -38,23 +38,35 @@ const bubbleSort = arr => {
   return arr;
 };
 
-const randomArr = () => {
+const randomArr = arrLen => {
   const res = [];
-  for (let i = 1; i <= 1000; i++) {
+  for (let i = 1; i <= arrLen; i++) {
     res.push(Math.ceil(-1000 + Math.random() * 2000));
   }
   return res;
 };
-randomArr();
+// randomArr();
 
-let random10 = randomArr(),
-  random100 = randomArr(),
-  random1000 = randomArr();
+let random10 = randomArr(10),
+  random100 = randomArr(100),
+  random1000 = randomArr(1000);
 
-random10.length = 10;
-random100.length = 100;
-random1000.length = 1000;
+console.time("bubble10");
+randomArr(random10);
+console.timeEnd("bubble10");
+console.log(`length = ${random10.length} \n`);
 
+console.time("bubble100");
+randomArr(random100);
+console.timeEnd("bubble100");
+console.log(`length = ${random100.length} \n`);
+
+console.time("bubble1000");
+randomArr(random1000);
+console.timeEnd("bubble1000");
+console.log(`length = ${random1000.length} \n`);
+
+// -----sort
 console.time("bubblesort10");
 random10.sort((prev, next) => prev - next);
 console.timeEnd("bubblesort10");
